@@ -1,0 +1,5 @@
+fastmcp
+pymongo
+python-dotenv
+bson
+uvicorn

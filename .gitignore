@@ -12,3 +12,6 @@ wheels/
 .env
 gcp-oauth.keys.json
 .python-version
+
+node_modules
+data.py

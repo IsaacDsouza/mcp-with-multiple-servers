@@ -1,54 +1,24 @@
 from mcp.server.fastmcp import FastMCP
+from mongo_client import users_collection
+from bson.json_util import dumps
+from pymongo.errors import PyMongoError
 
-# Create an MCP server
-mcp = FastMCP()
-
-#### Tools ####
-# Add an addition tool
-@mcp.tool()
-def add(a: int, b: int) -> int:
-    """Add two numbers"""
-    print(f"Adding {a} and {b}")
-    return a + b
-# Add a subtraction tool
-@mcp.tool()
-def subtract(a: int, b: int) -> int:
-    """Subtract two numbers"""
-    print(f"Subtracting {b} from {a}")
-    return a - b
-
-# More tools can be added here
-
-#### Resources ####
-# Add a static resource
-@mcp.resource("resource://some_static_resource")
-def get_static_resource() -> str:
-    """Static resource data"""
-    return "Any static data can be returned"
+mcp = FastMCP("MongoDB App")
 
 
-# Add a dynamic greeting resource
-@mcp.resource("greeting://{name}")
-def get_greeting(name: str) -> str:
-    """Get a personalized greeting"""
-    return f"Hello, {name}!"
-
-
-#### Prompts ####
-@mcp.prompt()
-def review_code(code: str) -> str:
-    return f"Please review this code:\n\n{code}"
-
-
-@mcp.prompt()
-def debug_error(error: str) -> list[tuple]:
-    return [
-        ("user", "I'm seeing this error:"),
-        ("user", error),
-        ("assistant", "I'll help debug that. What have you tried so far?"),
-    ]
+# ===== Resources =====
+@mcp.resource("resource://all_users_data")
+def all_users_data() -> str:
+    """
+    Returns all users in the MongoDB collection as a JSON string.
+    This will be used by the LLM to answer user queries based on the data.
+    """
+    try:
+        users = users_collection.find({}, {"_id": 0})  # exclude _id for readability
+        return dumps(list(users))
+    except PyMongoError as e:
+        return f"Database error: {str(e)}"
 
 
 if __name__ == "__main__":
-    # Initialize and run the server
-    mcp.run(transport='sse')
+    mcp.run(transport="sse")
