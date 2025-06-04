@@ -16,6 +16,17 @@
         "run",
         "/home/isaac/mcp-server-demo/server.py"
       ]
+    },
+    "gcalendar_server": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--with",
+        "mcp[cli]",
+        "mcp",
+        "run",
+        "/home/isaac/mcp-server-demo/gcalendar_server.py"
+      ]
     }
   }
 }

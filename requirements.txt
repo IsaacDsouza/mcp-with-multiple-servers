@@ -3,3 +3,9 @@ pymongo
 python-dotenv
 bson
 uvicorn
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+google-api-python-client
+mcp-use
+"mcp[cli]"

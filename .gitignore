@@ -15,3 +15,5 @@ gcp-oauth.keys.json
 
 node_modules
 data.py
+token.json
+credentials.json
