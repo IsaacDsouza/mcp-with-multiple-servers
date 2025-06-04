@@ -6,8 +6,8 @@ Automates your meetings, emails & docs via prompts
 
 1. # Clone and enter the project
 ```bash
-git clone https://github.com/your-username/mcp-server-demo.git
-cd mcp-server-demo
+git clone https://github.com/IsaacDsouza/mcp-with-multiple-servers
+cd mcp-with-multiple-servers
 ```
 
 2.  # Create virtual environment and activate it
@@ -72,5 +72,9 @@ uv add -r requirements.txt
 6. # Run Token generator:
 ```bash
 uv run tokengen.py
+```
+7. # Run Application
+```bash
+uv run app.py
 ```
 
