@@ -14,7 +14,7 @@
         "mcp[cli]",
         "mcp",
         "run",
-        "/home/isaac/mcp-server-demo/server.py"
+        "/home/isaac/mcp-server-demo/mongodb/mongo_server.py"
       ]
     },
     "gcalendar_server": {
@@ -25,7 +25,7 @@
         "mcp[cli]",
         "mcp",
         "run",
-        "/home/isaac/mcp-server-demo/gcalendar_server.py"
+        "/home/isaac/mcp-server-demo/gcalendar/gcalendar_server.py"
       ]
     }
   }
